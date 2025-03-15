@@ -2,14 +2,14 @@ services:
   mariadb:
     container_name: mariadb
     image: mariadb
-    restart: unless-stopped
     ports:
       - "3306:3306"
     environment:
-      MARIADB_DATABASE: series-tracker-db
+      MARIADB_DATABASE: seriestrackerdb
+      SPRING_DATASOURCE_USERNAME: root
       MARIADB_ROOT_PASSWORD: root
-    volumes:
-      - ./mysql:/var/lib/mysql
+    # volumes:
+    #  - ./mysql:/var/lib/mysql
     networks:
       - mariadb
 
