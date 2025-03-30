@@ -87,5 +87,4 @@ public final class Person {
     public void setBirthplace(final String birthplace) {
         this.birthplace = birthplace;
     }
-
 }

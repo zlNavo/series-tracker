@@ -24,16 +24,21 @@ public final class PersonController {
 
     @GetMapping("/persons")
     public ResponseEntity<List<PersonDTO>> getAllPersons() {
-        return ResponseEntity.ok(personService.getAllPersons());
+        return ResponseEntity.status(HttpStatus.OK).body(personService.getAllPersons());
     }
 
     @GetMapping("/persons/{id}")
     public ResponseEntity<PersonDTO> getPersonById(@PathVariable final Long id) {
-        return ResponseEntity.ok(personService.getPersonById(id));
+        return ResponseEntity.status(HttpStatus.OK).body(personService.getPersonById(id));
     }
 
     @PutMapping("/persons/{id}")
     public ResponseEntity<PersonDTO> updatePerson(@PathVariable final Long id, final @Valid @RequestBody PersonDTOSimple requestBody) {
-        return ResponseEntity.ok(personService.updatePerson(id, requestBody));
+        return ResponseEntity.status(HttpStatus.OK).body(personService.updatePerson(id, requestBody));
+    }
+
+    @DeleteMapping("/persons/{id}")
+    public ResponseEntity<PersonDTO> deletePerson(@PathVariable final Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(personService.deletePerson(id));
     }
 }

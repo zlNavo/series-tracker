@@ -1,8 +1,8 @@
-package de.seriestracker.person;
+package de.seriestracker.media.series;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends CrudRepository<Person, Long> {
+public interface SeriesRepository extends CrudRepository<Series, Long> {
 }

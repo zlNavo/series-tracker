@@ -21,26 +21,20 @@ public final class PersonService {
     }
 
     public PersonDTO getPersonById(final Long id) {
-        if (!personRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Person with given Id does not exist");
-        }
-        return PersonEntityMapper.personToPersonDTO(personRepository.findById(id).orElse(null));
+        return PersonEntityMapper.personToPersonDTO(personRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Person with id %d not found", id))
+        ));
     }
 
     public List<PersonDTO> getAllPersons() {
-        List<Person> personList = (List<Person>) personRepository.findAll();
-        return personList.stream().map(PersonEntityMapper::personToPersonDTO).toList();
+        List<Person> persons = (List<Person>) personRepository.findAll();
+        return persons.stream().map(PersonEntityMapper::personToPersonDTO).toList();
     }
 
     public PersonDTO updatePerson(final Long id, final PersonDTOSimple personDTOSimple) {
-        if (id == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Person id may not be null");
-        }
-
-        Person person = personRepository.findById(id).orElse(null);
-        if (person == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Person with given Id does not exist");
-        }
+        Person person = personRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Person with id %d not found", id))
+        );
 
         person.setFirstName(personDTOSimple.firstName());
         person.setLastName(personDTOSimple.lastName());
@@ -59,5 +53,14 @@ public final class PersonService {
         }
 
         return PersonEntityMapper.personToPersonDTO(personRepository.save(person));
+    }
+
+    public PersonDTO deletePerson(final Long id) {
+        Person person = personRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Person with id %d not found", id))
+        );
+        personRepository.delete(person);
+
+        return PersonEntityMapper.personToPersonDTO(person);
     }
 }

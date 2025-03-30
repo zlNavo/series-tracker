@@ -9,12 +9,26 @@ import java.util.Date;
 
 @Entity
 @Table(name = "season")
-public final class Season extends Media {
+public final class Season{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "series_id")
     private Series series;
 
-    @Column(name = "end_date")
-    private Date endDate;
+    public Season() {}
+
+    public Season(final Series series) {
+        this.series = series;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Series getSeries() {
+        return series;
+    }
 }
