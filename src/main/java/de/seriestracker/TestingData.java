@@ -9,9 +9,9 @@ import de.seriestracker.media.series.SeriesService;
 import de.seriestracker.media.series.season.SeasonDTOSimple;
 import de.seriestracker.media.series.season.episode.EpisodeDTOSimple;
 import de.seriestracker.person.Gender;
-import de.seriestracker.person.Person;
 import de.seriestracker.person.PersonDTOSimple;
 import de.seriestracker.person.PersonService;
+
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 

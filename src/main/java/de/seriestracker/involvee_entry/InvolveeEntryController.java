@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class InvolveeEntryController {
 
-    private InvolveeEntryService involveeEntryService;
+    private final InvolveeEntryService involveeEntryService;
 
     public InvolveeEntryController(final InvolveeEntryService involveeEntryService) {
         this.involveeEntryService = involveeEntryService;

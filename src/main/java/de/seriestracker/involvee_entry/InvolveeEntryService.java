@@ -13,11 +13,9 @@ import java.util.List;
 @Service
 public final class InvolveeEntryService {
 
-    private InvolveeEntryRepository involveeEntryRepository;
-
-    private PersonRepository personRepository;
-
-    private MovieRepository movieRepository;
+    private final InvolveeEntryRepository involveeEntryRepository;
+    private final PersonRepository personRepository;
+    private final MovieRepository movieRepository;
 
     public InvolveeEntryService(final InvolveeEntryRepository involveeEntryRepository, final PersonRepository personRepository, final MovieRepository movieRepository) {
         this.involveeEntryRepository = involveeEntryRepository;

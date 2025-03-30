@@ -4,11 +4,9 @@ import de.seriestracker.media.movie.Movie;
 import de.seriestracker.person.Person;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "involvee_entry")
-//@EitherOr(fields = {"episode", "movie"})
 public final class InvolveeEntry {
 
     @Id
@@ -18,12 +16,6 @@ public final class InvolveeEntry {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "episode_id")
-    private Episode episode;
-    */
 
     @ManyToOne
     @JoinColumn(name = "movie_id")

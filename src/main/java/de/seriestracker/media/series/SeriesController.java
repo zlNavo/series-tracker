@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 public final class SeriesController {
-    private SeriesService seriesService;
+    private final SeriesService seriesService;
 
     public SeriesController(final SeriesService seriesService) {
         this.seriesService = seriesService;

@@ -1,11 +1,8 @@
 package de.seriestracker.media.series.season;
 
-import de.seriestracker.media.Media;
 import de.seriestracker.media.series.Series;
 
 import jakarta.persistence.*;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "season")

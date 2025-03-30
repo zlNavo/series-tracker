@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public final class SeriesService {
 
-    private SeriesRepository seriesRepository;
-    private SeasonRepository seasonRepository;
-    private EpisodeRepository episodeRepository;
+    private final SeriesRepository seriesRepository;
+    private final SeasonRepository seasonRepository;
+    private final EpisodeRepository episodeRepository;
 
     public SeriesService(final SeriesRepository seriesRepository, final SeasonRepository seasonRepository, final EpisodeRepository episodeRepository) {
         this.seriesRepository = seriesRepository;
